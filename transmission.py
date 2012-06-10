@@ -48,7 +48,7 @@ class TorrentIterator(object):
 
     def filter(self, ids, predicates):
         # Always include the 'name' and 'id' fields
-        fields = [p[0] for p in predicates]
+        fields = [p[0] for p in predicates] + ['name', 'id']
 
         request_params = {'fields': fields}
         if ids:
