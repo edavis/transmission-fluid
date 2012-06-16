@@ -21,7 +21,7 @@ Usage
    u'name': u'Elvis spotted in Florida.mov'}]}
 
 >>> client('torrent-get', ids=range(1,11), fields=['name'])
-{u'torrents': [{u'name': u'Elvis sighting in Florida.mov'},
+{u'torrents': [{u'name': u'Elvis spotted in Florida.mov'},
   {u'name': u'Bigfoot sings the hits'},
   # ...
   {u'name': u'a-song-of-ice-and-fire_final-chapter.txt'}]}
