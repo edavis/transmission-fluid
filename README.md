@@ -49,10 +49,13 @@ works is one more source of friction.
 and arguments, you'll be able to use them right away instead of
 waiting for this wrapper to be updated to take advantage of them.
 
-### Getting torrent info
+Examples
+--------
 
-Say, for example, you want the name and infohash hexdigest for the
-first torrent in Transmission:
+### Getting torrent information
+
+Say you want the name and infohash hexdigest for the first torrent in
+Transmission:
 
 ```python
 >>> client('torrent-get', ids=1, fields=['name', 'hashString'])
