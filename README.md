@@ -34,8 +34,8 @@ After creating a client object, use the following syntax to make RPC calls:
 >>> client(<required method>, [optional key-value arguments])
 ```
 
-And transmission-fluid will return the appropriate response (if there
-is one) after making sure the request succeeds.
+And transmission-fluid will return the appropriate response, if there
+is one.
 
 transmission-fluid purposefully exposes the RPC spec instead of trying
 to abstract it away.  This is done for two reasons:
@@ -110,7 +110,7 @@ IDs rather than looping through a list of torrents and making an RPC
 call for each torrent ID.
 
 It's the difference between making one HTTP request with all the
-torrents you want to update and *N* HTTP requests with one ID at a
+torrents you want to operate on and *N* HTTP requests with one ID at a
 time.  The overhead can get noticable quick.
 
 *Note:* The IDs don't have to be numeric, either. If you're using
