@@ -142,4 +142,4 @@ ChangeLog
 - [v0.1][] — June 16, 2012
     - Initial release
 
-[v0.1]: tree/v0.1
+[v0.1]: transmission-fluid/tree/v0.1
