@@ -20,7 +20,7 @@ Usage
 By default, it connects to http://localhost:9091/transmission/rpc
 without authentication.
 
-If you need any of those things changed, pass them in:
+If that doesn't work for you, you can change it:
 
 ```python
 >>> client = Transmission(host='192.168.1.102', port=9090,
