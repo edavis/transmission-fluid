@@ -77,6 +77,22 @@ And because `torrent-get` can accept a list of IDs, you can do this:
 ]}
 ```
 
+### Removing old torrents
+
+Say you want to remove all torrents added more than 30 days ago:
+
+```python
+>>> import time
+>>> def is_old(torrent):
+...   expire = time.time() - (30 * 24 * 60 * 60)
+...   return torrent['addedDate'] < expire:
+...
+>>> # If you omit the ids argument, it'll grab all torrents
+>>> torrents = client('torrent-get', fields=['id', 'addedDate'])['torrents']
+>>> torrent_ids = [torrent['id'] for torrent in filter(is_old, torrents)]
+>>> client('torrent-remove', ids=torrent_ids)
+```
+
 ### Dashes in keys
 
 Some methods require arguments with dashes in them. Python doesn't
