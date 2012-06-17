@@ -32,3 +32,8 @@ Requirements
 
 - [requests](http://python-requests.org/) (>= 0.11.2)
 - [anyjson](http://pypi.python.org/pypi/anyjson) (>= 0.3.1)
+
+License
+-------
+
+MIT
