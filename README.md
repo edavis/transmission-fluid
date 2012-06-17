@@ -106,6 +106,20 @@ Say you want to remove all torrents added more than 30 days ago:
 >>> client('torrent-remove', ids=torrent_ids)
 ```
 
+#### Operating on torrents in batches
+
+Always try to structure your program to operate on a list of torrent
+IDs rather than looping through a list of torrent objects and making
+an RPC call for each torrent ID.
+
+It's the difference between making one HTTP request with all the
+torrents you want to update and *N* HTTP requests with one ID at a
+time.  The overhead can get noticable quick.
+
+*Note:* The IDs don't have to be numeric, either. If you're using
+ infohash hexdigests already, you can use them as-is in any `ids`
+ request argument.
+
 Requirements
 ------------
 
