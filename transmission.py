@@ -20,7 +20,7 @@ class Transmission(object):
         self.tag = 0
 
         self.auth = None
-        if any([username, password]):
+        if username or password:
             self.auth = (username, password)
 
     def __call__(self, method, **kwargs):
