@@ -1,7 +1,7 @@
-transmission-fluid -- get under the hood
+transmission-fluid — get under the hood
 ========================================
 
-A python wrapper around [Transmission's][transmission] [RPC
+A Python wrapper around [Transmission's][transmission] [RPC
 interface][rpc].
 
 [transmission]: http://transmissionbt.com/
@@ -75,10 +75,8 @@ Transmission:
 ]}
 ```
 
-Note how the method, request arguments and response correspond
-directly with the `torrent-get` [API docs](https://trac.transmissionbt.com/browser/trunk/extras/rpc-spec.txt#L131).
-
-And because `torrent-get` can accept a list of IDs, you can do this:
+To get torrent information from a bunch of torrents at once, use a
+list of IDs:
 
 ```python
 >>> client('torrent-get', ids=range(1,11), fields=['name'])
@@ -98,7 +96,7 @@ Say you want to remove all torrents added more than 30 days ago:
 >>> import time
 >>> def is_old(torrent):
 ...   expire = time.time() - (30 * 24 * 60 * 60)
-...   return torrent['addedDate'] < expire:
+...   return torrent['addedDate'] < expire
 ...
 >>> # If you omit the ids argument, it'll grab all torrents
 >>> torrents = client('torrent-get', fields=['id', 'addedDate'])['torrents']
@@ -109,8 +107,8 @@ Say you want to remove all torrents added more than 30 days ago:
 #### Operating on torrents in batches
 
 Always try to structure your program to operate on a list of torrent
-IDs rather than looping through a list of torrent objects and making
-an RPC call for each torrent ID.
+IDs rather than looping through a list of torrents and making an RPC
+call for each torrent ID.
 
 It's the difference between making one HTTP request with all the
 torrents you want to update and *N* HTTP requests with one ID at a
