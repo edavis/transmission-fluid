@@ -123,7 +123,7 @@ time.  The overhead can get noticable quick.
 Installation
 ------------
 
-```bash
+```
 $ pip install transmission-fluid
 ```
 
