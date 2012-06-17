@@ -20,6 +20,12 @@ Usage
 Getting started is pretty simple. By default, it connects to
 http://localhost:9091/transmission/rpc if no `host`, `port` or `path`
 arguments are given.
+If you require authentication, just pass `username` and `password`
+when creating the client:
+
+```python
+>>> client = Transmission(username='foo', password='baz')
+```
 
 ### RPC syntax
 

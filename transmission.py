@@ -7,14 +7,19 @@ CSRF_HEADER = 'X-Transmission-Session-Id'
 class BadRequest(Exception): pass
 
 class Transmission(object):
-    def __init__(self, host='localhost', port=9091, path='/transmission/rpc'):
+    def __init__(self, host='localhost', port=9091, path='/transmission/rpc',
+                 username=None, password=None):
         self.url = "http://%s:%d%s" % (host, port, path)
         self.headers = {}
         self.tag = 0
 
+        self.auth = None
+        if any([username, password]):
+            self.auth = (username, password)
+
     def __call__(self, method, **kwargs):
         body = anyjson.serialize(self._format_request_body(method, **kwargs))
-        response = requests.post(self.url, data=body, headers=self.headers)
+        response = requests.post(self.url, data=body, headers=self.headers, auth=self.auth)
         if response.status_code == CSRF_ERROR_CODE:
             self.headers[CSRF_HEADER] = response.headers[CSRF_HEADER]
             return self(method, **kwargs)
