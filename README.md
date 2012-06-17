@@ -54,6 +54,16 @@ And because `torrent-get` can accept a list of IDs, you can do this:
 ]}
 ```
 
+### Dashes in keys
+
+Some methods require arguments with dashes in them. Python doesn't
+accept dashes dashes in keyword arguments, so replace any dashes with
+underscores and transmission-fluid will do the right thing:
+
+```python
+>>> client('torrent-set', ids=1, peer_limit=30)
+```
+
 Requirements
 ------------
 

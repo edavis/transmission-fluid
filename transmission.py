@@ -24,7 +24,12 @@ class Transmission(object):
         """
         Create a request object to be serialized and sent to Transmission.
         """
-        return {"method": method, "tag": self.tag, "arguments": kwargs}
+        fixed = {}
+        # As Python can't accept dashes in kwargs keys, replace any
+        # underscores with them here.
+        for k, v in kwargs.iteritems():
+            fixed[k.replace('_', '-')] = v
+        return {"method": method, "tag": self.tag, "arguments": fixed}
 
     def _deserialize_response(self, response):
         doc = anyjson.deserialize(response.content)
