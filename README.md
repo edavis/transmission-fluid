@@ -23,8 +23,7 @@ without authentication.
 If that doesn't work for you, you can change it:
 
 ```python
->>> client = Transmission(host='192.168.1.102', port=9090,
-                          username='foo', password='baz')
+>>> client = Transmission(host='192.168.1.102', port=9090, username='foo', password='baz')
 ```
 
 ### RPC syntax
