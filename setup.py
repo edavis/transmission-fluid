@@ -25,7 +25,6 @@ setup(
     author_email = "ed@npri.org",
     url = "https://github.com/edavis/transmission-fluid",
     py_modules = ['transmission'],
-    license = 'MIT',
     classifiers = [
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
