@@ -39,7 +39,7 @@ first torrent in Transmission:
 ]}
 ```
 
-Note how the method, request arguments and response are correspond
+Note how the method, request arguments and response correspond
 directly with the `torrent-get` [API docs](https://trac.transmissionbt.com/browser/trunk/extras/rpc-spec.txt#L131).
 
 And because `torrent-get` can accept a list of IDs, you can do this:
