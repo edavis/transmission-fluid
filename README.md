@@ -120,6 +120,13 @@ time.  The overhead can get noticable quick.
  infohash hexdigests already, you can use them as-is in any `ids`
  request argument.
 
+Installation
+------------
+
+```bash
+$ pip install transmission-fluid
+```
+
 Requirements
 ------------
 
