@@ -17,14 +17,14 @@ Usage
 >>> client = Transmission()
 ```
 
-Getting started is pretty simple. By default, it connects to
-http://localhost:9091/transmission/rpc if no `host`, `port` or `path`
-arguments are given.
-If you require authentication, just pass `username` and `password`
-when creating the client:
+By default, it connects to http://localhost:9091/transmission/rpc
+without authentication.
+
+If you need any of those things changed, pass them in:
 
 ```python
->>> client = Transmission(username='foo', password='baz')
+>>> client = Transmission(host='192.168.1.102', port=9090,
+                          username='foo', password='baz')
 ```
 
 ### RPC syntax
