@@ -49,6 +49,16 @@ works is one more source of friction.
 and arguments, you'll be able to use them right away instead of
 waiting for this wrapper to be updated to take advantage of them.
 
+#### Dashes in keys
+
+Some methods require arguments with dashes in them. Python doesn't
+accept dashes dashes in keyword arguments, so replace any dashes with
+underscores and transmission-fluid will do the right thing:
+
+```python
+>>> client('torrent-set', ids=1, peer_limit=30)
+```
+
 Examples
 --------
 
@@ -94,16 +104,6 @@ Say you want to remove all torrents added more than 30 days ago:
 >>> torrents = client('torrent-get', fields=['id', 'addedDate'])['torrents']
 >>> torrent_ids = [torrent['id'] for torrent in filter(is_old, torrents)]
 >>> client('torrent-remove', ids=torrent_ids)
-```
-
-### Dashes in keys
-
-Some methods require arguments with dashes in them. Python doesn't
-accept dashes dashes in keyword arguments, so replace any dashes with
-underscores and transmission-fluid will do the right thing:
-
-```python
->>> client('torrent-set', ids=1, peer_limit=30)
 ```
 
 Requirements
