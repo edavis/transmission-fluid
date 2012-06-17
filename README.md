@@ -10,6 +10,8 @@ interface][rpc].
 Usage
 -----
 
+### Getting started
+
 ```python
 >>> from transmission import Transmission
 >>> client = Transmission()
@@ -19,6 +21,8 @@ Getting started is pretty simple. By default, it connects to
 http://localhost:9091/transmission/rpc if no `host`, `port` or `path`
 arguments are given.
 
+### RPC syntax
+
 After creating a client object, use the following syntax to make RPC calls:
 
 ```python
@@ -26,7 +30,20 @@ After creating a client object, use the following syntax to make RPC calls:
 ```
 
 And transmission-fluid will return the appropriate response (if there
-is one) after making sure the request succeeded.
+is one) after making sure the request succeeds.
+
+transmission-fluid purposefully exposes the RPC spec instead of trying
+to abstract it away.  This is done for two reasons:
+
+1. *Easy for developers.* Developers already have enough on their
+plate when writing a program. Making them learn how a new library
+works is one more source of friction.
+
+2. *Stays current.* As the Transmission developers add more methods
+and arguments, you'll be able to use them right away instead of
+waiting for this wrapper to be updated to take advantage of them.
+
+### Getting torrent info
 
 Say, for example, you want the name and infohash hexdigest for the
 first torrent in Transmission:
