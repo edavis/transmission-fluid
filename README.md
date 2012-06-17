@@ -35,11 +35,11 @@ is one) after making sure the request succeeds.
 transmission-fluid purposefully exposes the RPC spec instead of trying
 to abstract it away.  This is done for two reasons:
 
-1. *Easy for developers.* Developers already have enough on their
+1. **Easy for developers.** Developers already have enough on their
 plate when writing a program. Making them learn how a new library
 works is one more source of friction.
 
-2. *Stays current.* As the Transmission developers add more methods
+2. **Stays current.** As the Transmission developers add more methods
 and arguments, you'll be able to use them right away instead of
 waiting for this wrapper to be updated to take advantage of them.
 
