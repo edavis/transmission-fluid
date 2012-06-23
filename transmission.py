@@ -61,6 +61,6 @@ class Transmission(object):
             del doc['tag']
             self.tag += 1
 
-        # Return doc['arguments'] if exists, else whole doc
-        # If either of them are false, return None
-        return doc.get('arguments', doc) or None
+        if 'arguments' in doc:
+            return doc['arguments'] or None
+        return None
