@@ -60,7 +60,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
         """
         Any unsuccessful request raises BadRequest.
         """
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"result": "failure"}
             self.client._deserialize_response(mock.MagicMock())
 
@@ -69,7 +69,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
         """
         Tag mismatches raises BadRequest.
         """
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"tag": -1, "result": "success"}
             self.client._deserialize_response(mock.MagicMock())
 
@@ -78,7 +78,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
         Tag param gets incremented when successful.
         """
         tag = self.client.tag
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"result": "success", "tag": tag}
             self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(tag + 1, self.client.tag)
@@ -87,7 +87,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
         """
         Return the arguments key if it exists.
         """
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"arguments": [1], "result": "success", "tag": 0}
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual([1], ret)
@@ -97,13 +97,13 @@ class TestTransmissionResponseDeserializing(TestTransmission):
         Return "None" if arguments doesn't exist or is False.
         """
         # "arguments" exists but is False
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"arguments": [], "result": "success", "tag": self.client.tag}
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(None, ret)
 
         # "arguments" doesn't exist at all
-        with mock.patch("anyjson.deserialize") as mocked:
+        with mock.patch("json.loads") as mocked:
             mocked.return_value = {"result": "success", "tag": self.client.tag}
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(None, ret)
