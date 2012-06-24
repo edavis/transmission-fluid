@@ -3,7 +3,6 @@ import mock
 import unittest
 import transmission
 from copy import deepcopy
-from transmission import Transmission, BadRequest
 
 class CopyingMock(mock.MagicMock):
     """
@@ -25,7 +24,7 @@ class TestTransmission(unittest.TestCase):
     Base class for Transmission testing.
     """
     def setUp(self):
-        self.client = Transmission()
+        self.client = transmission.Transmission()
 
 class TestTransmissionBodyFormatting(TestTransmission):
     """
@@ -56,7 +55,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
     """
     Test how responses are deserialized and handled.
     """
-    @nose.tools.raises(BadRequest)
+    @nose.tools.raises(transmission.BadRequest)
     def test_unsuccessful_request(self):
         """
         Any unsuccessful request raises BadRequest.
@@ -65,7 +64,7 @@ class TestTransmissionResponseDeserializing(TestTransmission):
             mocked.return_value = {"result": "failure"}
             self.client._deserialize_response(mock.MagicMock())
 
-    @nose.tools.raises(BadRequest)
+    @nose.tools.raises(transmission.BadRequest)
     def test_tag_mismatch(self):
         """
         Tag mismatches raises BadRequest.
