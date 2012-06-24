@@ -3,8 +3,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import transmission
-
 long_description = """
 transmission-fluid is a Python wrapper for Transmission's RPC interface. ::
 
@@ -23,7 +21,7 @@ See the `README <https://github.com/edavis/transmission-fluid#readme>`_ for more
 
 setup(
     name = "transmission-fluid",
-    version = transmission.__version__,
+    version = "0.2",
     description = "A Python wrapper for Transmission's RPC interface",
     long_description = long_description,
     author = "Eric Davis",
