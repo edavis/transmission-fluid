@@ -1,4 +1,7 @@
-from distutils.core import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 long_description = """
 transmission-fluid is a Python wrapper for Transmission's RPC interface. ::
