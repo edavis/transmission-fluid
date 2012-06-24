@@ -11,6 +11,9 @@ A Python wrapper for Transmission's RPC interface.
   {u'name': u'a-song-of-ice-and-fire_final-chapter.txt'}
 ]}
 """
+
+__version__ = '0.1'
+
 import anyjson
 import requests
 
