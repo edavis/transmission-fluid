@@ -40,8 +40,9 @@ After creating a client object, use the following syntax to make RPC calls:
 And transmission-fluid will return the appropriate response, if there
 is one.
 
-transmission-fluid purposefully exposes the RPC spec instead of trying
-to abstract it away.  This is done for two reasons:
+transmission-fluid purposefully exposes almost all of the RPC
+specification instead of trying to abstract it away.  This is done for
+two reasons:
 
 1. **Easy for developers.** Developers already have enough on their
 plate when writing a program. Making them learn how a new library
@@ -50,6 +51,12 @@ works is one more source of friction.
 2. **Stays current.** As the Transmission developers add more methods
 and arguments, you'll be able to use them right away instead of
 waiting for this wrapper to be updated to take advantage of them.
+
+The only exception to this rule is how timestamps are handled. The
+Transmission RPC returns UNIX epoch timestamps for all fields
+containing date and time information while transmission-fluid
+transparently converts these values into UTC `datetime.datetime`
+objects.
 
 #### Dashes in keys
 
@@ -95,10 +102,11 @@ list of IDs:
 Say you want to remove all torrents added more than 30 days ago:
 
 ```python
->>> import time
+>>> import datetime
 >>> def is_old(torrent):
-...   expire = time.time() - (30 * 24 * 60 * 60)
-...   return torrent['addedDate'] < expire
+...   now = datetime.datetime.utcnow()
+...   delta = now - torrent['addedDate']
+...   return delta.days > 30
 ...
 >>> # If you omit the ids argument, it'll grab all torrents
 >>> torrents = client('torrent-get', fields=['id', 'addedDate'])['torrents']

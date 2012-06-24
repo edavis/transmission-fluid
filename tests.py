@@ -1,5 +1,7 @@
 import nose
 import mock
+import json
+import datetime
 import unittest
 import transmission
 from copy import deepcopy
@@ -107,6 +109,37 @@ class TestTransmissionResponseDeserializing(TestTransmission):
             mocked.return_value = {"result": "success", "tag": self.client.tag}
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(None, ret)
+
+class TestTransmissionJSON(TestTransmission):
+    """
+    Test the custom JSON encoder and decoder.
+    """
+    def test_epochs_to_datetimes(self):
+        """
+        Convert UNIX timestamps into UTC datetimes.
+        """
+        returned = json.loads(json.dumps({"addedDate": 1320091283}),
+                              cls=transmission.TransmissionJSONDecoder)
+        expected = {"addedDate": datetime.datetime(2011, 10, 31, 20, 1, 23)}
+        self.assertEqual(expected, returned)
+
+    def test_datetimes_to_epochs(self):
+        """
+        Convert UTC datetimes into UNIX epochs.
+        """
+        returned = json.dumps({"addedDate": datetime.datetime(2011, 10, 31, 20, 1, 23)},
+                              cls=transmission.TransmissionJSONEncoder)
+        expected = '{"addedDate": 1320091283}'
+        self.assertEqual(expected, returned)
+
+    def test_dates_to_epochs(self):
+        """
+        Convert UTC dates to UNIX epochs.
+        """
+        returned = json.dumps({"addedDate": datetime.date(2011, 10, 31)},
+                              cls=transmission.TransmissionJSONEncoder)
+        expected = '{"addedDate": 1320019200}'
+        self.assertEqual(expected, returned)
 
 class TestTransmissionRequests(TestTransmission):
     def test_csrf_handling(self):
