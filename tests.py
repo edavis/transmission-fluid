@@ -1,6 +1,5 @@
 import nose
 import mock
-import anyjson
 import unittest
 import transmission
 from copy import deepcopy
@@ -121,10 +120,10 @@ class TestTransmissionRequests(TestTransmission):
                                   mock.MagicMock(name='okay')]
 
             self.client._make_request("torrent-get", ids=1, fields=['name'])
-            body = anyjson.serialize(self.client._format_request_body("torrent-get", ids=1, fields=["name"]))
+            (csrf, okay) = mocked.mock_calls
 
-            mocked.assert_any_call(
-                self.client.url, data=body, headers={}, auth=None)
+            kwargs = csrf[-1]
+            self.assertEqual({}, kwargs['headers'])
 
-            mocked.assert_any_call(
-                self.client.url, data=body, headers=headers, auth=None)
+            kwargs = okay[-1]
+            self.assertEqual(headers, kwargs['headers'])
