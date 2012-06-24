@@ -27,12 +27,16 @@ class Transmission(object):
         """
         Send request to Transmission's RPC interface.
         """
+        response = self._make_request(method, **kwargs)
+        return self._deserialize_response(response)
+
+    def _make_request(self, method, **kwargs):
         body = anyjson.serialize(self._format_request_body(method, **kwargs))
         response = requests.post(self.url, data=body, headers=self.headers, auth=self.auth)
         if response.status_code == CSRF_ERROR_CODE:
             self.headers[CSRF_HEADER] = response.headers[CSRF_HEADER]
-            return self(method, **kwargs)
-        return self._deserialize_response(response)
+            return self._make_request(method, **kwargs)
+        return response
 
     def _format_request_body(self, method, **kwargs):
         """

@@ -1,7 +1,25 @@
 import nose
 import mock
+import anyjson
 import unittest
+import transmission
+from copy import deepcopy
 from transmission import Transmission, BadRequest
+
+class CopyingMock(mock.MagicMock):
+    """
+    By default, MagicMock stores args/kwargs by reference rather
+    than by value.
+
+    By using deepcopy, we allow ourselves to assert how mocked objects
+    were called -- even if a value changes in the mean time.
+
+    http://www.voidspace.org.uk/python/mock/examples.html#coping-with-mutable-arguments
+    """
+    def __call__(self, *args, **kwargs):
+        args = deepcopy(args)
+        kwargs = deepcopy(kwargs)
+        return super(CopyingMock, self).__call__(*args, **kwargs)
 
 class TestTransmission(unittest.TestCase):
     """
@@ -91,3 +109,22 @@ class TestTransmissionResponseDeserializing(TestTransmission):
             mocked.return_value = {"result": "success", "tag": self.client.tag}
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(None, ret)
+
+class TestTransmissionRequests(TestTransmission):
+    def test_csrf_handling(self):
+        """
+        Make sure the CSRF dance goes smoothly.
+        """
+        headers = {transmission.CSRF_HEADER: '123'}
+        with mock.patch("requests.post", new_callable=CopyingMock) as mocked:
+            mocked.side_effect = [mock.MagicMock(name='csrf', status_code=transmission.CSRF_ERROR_CODE, headers=headers),
+                                  mock.MagicMock(name='okay')]
+
+            self.client._make_request("torrent-get", ids=1, fields=['name'])
+            body = anyjson.serialize(self.client._format_request_body("torrent-get", ids=1, fields=["name"]))
+
+            mocked.assert_any_call(
+                self.client.url, data=body, headers={}, auth=None)
+
+            mocked.assert_any_call(
+                self.client.url, data=body, headers=headers, auth=None)
