@@ -29,6 +29,7 @@ setup(
     author = "Eric Davis",
     author_email = "ed@npri.org",
     url = "https://github.com/edavis/transmission-fluid",
+    download_url = "http://pypi.python.org/pypi/transmission-fluid",
     py_modules = ['transmission'],
     install_requires = ["requests==0.13.1", "anyjson==0.3.3"],
     classifiers = [
