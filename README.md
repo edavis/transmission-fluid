@@ -139,7 +139,14 @@ MIT
 ChangeLog
 ---------
 
+- [v0.2][] — June 23, 2012
+    - Use setuptools, if available
+    - Add extensive test suite
+    - Test against Python 2.6 and 2.7
+    - Misc. documentation updates
+
 - [v0.1][] — June 16, 2012
     - Initial release
 
 [v0.1]: transmission-fluid/tree/v0.1
+[v0.2]: transmission-fluid/tree/v0.2
