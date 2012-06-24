@@ -18,6 +18,13 @@ TIMESTAMP_KEYS = frozenset(
 def epoch_to_datetime(value):
     return datetime.datetime.utcfromtimestamp(value)
 
+def datetime_to_epoch(value):
+    if isinstance(value, datetime.datetime):
+        return calendar.timegm(value.utctimetuple())
+    elif isinstance(value, datetime.date):
+        value = datetime.datetime(value.year, value.month, value.day)
+        return calendar.timegm(value.utctimetuple())
+
 class TransmissionJSONDecoder(json.JSONDecoder):
     def __init__(self, **kwargs):
         return super(TransmissionJSONDecoder, self).__init__(
@@ -31,13 +38,9 @@ class TransmissionJSONDecoder(json.JSONDecoder):
         return obj
 
 class TransmissionJSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        # datetime.datetime must be first otherwise it'll get picked
-        # up by datetime.date
-        if isinstance(o, datetime.datetime):
-            return calendar.timegm(o.utctimetuple())
-        elif isinstance(o, datetime.date):
-            value = datetime.datetime(o.year, o.month, o.day)
-            return calendar.timegm(value.utctimetuple())
+    def default(self, value):
+        # datetime is a subclass of date, so this'll catch both
+        if isinstance(value, datetime.date):
+            return datetime_to_epoch(value)
         else:
-            return o
+            return value
