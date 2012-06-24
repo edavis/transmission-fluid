@@ -4,7 +4,12 @@ except ImportError:
     from distutils.core import setup
 
 long_description = """
-transmission-fluid is a Python wrapper for Transmission's RPC interface. ::
+transmission-fluid is a Python wrapper for Transmission's RPC interface.
+
+.. image:: https://secure.travis-ci.org/edavis/transmission-fluid.png
+   :target: http://travis-ci.org/#!/edavis/transmission-fluid
+
+::
 
     >>> from transmission import Transmission
     >>> client = Transmission()
