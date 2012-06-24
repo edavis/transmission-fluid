@@ -142,6 +142,12 @@ MIT
 ChangeLog
 ---------
 
+- [v0.2.1][] — June 24, 2012
+    - Bugfix: Fix `anyjson` ImportError when loading setup.py
+    - Add project to [Travis CI][travis-ci]
+
+[travis-ci]: http://travis-ci.org/#!/edavis/transmission-fluid
+
 - [v0.2][] — June 23, 2012
     - Use setuptools, if available
     - Add extensive test suite
@@ -153,3 +159,4 @@ ChangeLog
 
 [v0.1]: transmission-fluid/tree/v0.1
 [v0.2]: transmission-fluid/tree/v0.2
+[v0.2.1]: transmission-fluid/tree/v0.2.1
