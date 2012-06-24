@@ -129,6 +129,7 @@ Requirements
 
 - [requests](http://python-requests.org/)
 - [anyjson](http://pypi.python.org/pypi/anyjson)
+- Python 2.6 or 2.7
 
 License
 -------
