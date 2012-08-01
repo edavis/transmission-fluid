@@ -26,7 +26,7 @@ class BadRequest(Exception): pass
 
 class Transmission(object):
     def __init__(self, host='localhost', port=9091, path='/transmission/rpc',
-                 username=None, password=None):
+                 username=None, password=None, ssl=False):
         """
         Initialize the Transmission client.
 
@@ -34,6 +34,8 @@ class Transmission(object):
         default.
         """
         self.url = "http://%s:%d%s" % (host, port, path)
+        if ssl:
+            self.url = "https://%s:%d%s" % (host, port, path)
         self.headers = {}
         self.tag = 0
 
@@ -50,7 +52,7 @@ class Transmission(object):
 
     def _make_request(self, method, **kwargs):
         body = json.dumps(self._format_request_body(method, **kwargs), cls=TransmissionJSONEncoder)
-        response = requests.post(self.url, data=body, headers=self.headers, auth=self.auth)
+        response = requests.post(self.url, data=body, headers=self.headers, auth=self.auth, verify=False)
         if response.status_code == CSRF_ERROR_CODE:
             self.headers[CSRF_HEADER] = response.headers[CSRF_HEADER]
             return self._make_request(method, **kwargs)
