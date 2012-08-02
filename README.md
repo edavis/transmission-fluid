@@ -29,6 +29,14 @@ If that doesn't work for you, you can change it:
 >>> client = Transmission(host='192.168.1.102', port=9090, username='foo', password='baz')
 ```
 
+#### SSL proxying
+
+Pass `ssl=True` when constructing a client to use HTTPS for
+communication. You can find an example nginx config for setting up SSL
+proxying [here](https://github.com/edavis/transmission-fluid/pull/1).
+
+*(New in version 0.3)*
+
 ### RPC syntax
 
 After creating a client object, use the following syntax to make RPC calls:
