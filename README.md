@@ -4,11 +4,10 @@ transmission-fluid — get under the hood
 A Python wrapper around [Transmission's][transmission] [RPC
 interface][rpc].
 
-![Build Status][travis-status]
+<a href="http://travis-ci.org/#!/edavis/transmission-fluid"><img src="https://secure.travis-ci.org/edavis/transmission-fluid.png" alt="Travis-CI build status"/></a>
 
 [transmission]: http://transmissionbt.com/
 [rpc]: https://trac.transmissionbt.com/browser/trunk/extras/rpc-spec.txt
-[travis-status]: https://secure.travis-ci.org/edavis/transmission-fluid.png "Travis CI build status"
 
 Usage
 -----
