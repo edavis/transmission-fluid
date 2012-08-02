@@ -60,11 +60,13 @@ works is one more source of friction.
 and arguments, you'll be able to use them right away instead of
 waiting for this wrapper to be updated to take advantage of them.
 
+#### Timestamps
+
 The only exception to this rule is how timestamps are handled. The
 Transmission RPC returns UNIX epoch timestamps for all fields
 containing date and time information while transmission-fluid
 transparently converts these values into UTC `datetime.datetime`
-objects.
+objects. This behavior was introduced in version 0.3.
 
 #### Dashes in keys
 
