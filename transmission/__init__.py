@@ -82,7 +82,6 @@ class Transmission(object):
         if doc['tag'] != self.tag:
             raise BadRequest("Tag mismatch: (got %d, expected %d)" % (doc['tag'], self.tag))
         else:
-            del doc['tag']
             self.tag += 1
 
         if 'arguments' in doc:
