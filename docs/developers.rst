@@ -2,8 +2,8 @@ Developers
 ==========
 
 transmission-fluid is available on `Github
-<https://github.com/edavis/transmission-fluid>`_ and welcomes
-contributions.
+<https://github.com/edavis/transmission-fluid>`_ and contributions are
+welcome.
 
 Tests and Docs
 --------------
