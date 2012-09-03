@@ -21,3 +21,4 @@ transmission-fluid is a Python wrapper around the `Transmission`_ BitTorrent cli
    usage
    examples
    developers
+   changelog
