@@ -10,7 +10,7 @@ transmission-fluid is a Python wrapper around the `Transmission`_ BitTorrent cli
 
    >>> from transmission import Transmission
    >>> client = Transmission()
-   >>> response = client('torrent-get', ids=1, fields=['name']
+   >>> response = client('torrent-get', ids=1, fields=['name'])
    >>> response['torrents']
    [{u'name': u'torrent 1'}]
 

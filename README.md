@@ -8,7 +8,7 @@ A Python wrapper around the [Transmission][transmission] BitTorrent client's [RP
 ```python
 >>> from transmission import Transmission
 >>> client = Transmission()
->>> response = client('torrent-get', ids=1, fields=['name']
+>>> response = client('torrent-get', ids=1, fields=['name'])
 >>> response['torrents']
 [{u'name': u'torrent 1'}]
 ```
