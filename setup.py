@@ -34,7 +34,7 @@ setup(
     url = "https://github.com/edavis/transmission-fluid",
     download_url = "http://pypi.python.org/pypi/transmission-fluid",
     packages = ["transmission"],
-    install_requires = ["requests==0.13.1"],
+    install_requires = ["requests>=1.2.3"],
     classifiers = [
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
