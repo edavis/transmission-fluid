@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.4 (September 7, 2013)
+-------------------------------
+
+* Bump requests from version 0.13.1 to 1.2.3
+
 Version 0.3 (August 1, 2012)
 ----------------------------
 
