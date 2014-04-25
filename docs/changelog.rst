@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.5 (April 24, 2014)
+----------------------------
+
+* Add Python 3 support
+
 Version 0.4 (September 7, 2013)
 -------------------------------
 

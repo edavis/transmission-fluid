@@ -12,11 +12,11 @@ A Python wrapper for Transmission's RPC interface.
 ]}
 """
 
-__version__ = '0.4'
+__version__ = '0.5'
 
 import json
 import requests
-from json_utils import (
+from .json_utils import (
     TransmissionJSONEncoder, TransmissionJSONDecoder)
 
 CSRF_ERROR_CODE = 409
@@ -65,7 +65,7 @@ class Transmission(object):
         fixed = {}
         # As Python can't accept dashes in kwargs keys, replace any
         # underscores with them here.
-        for k, v in kwargs.iteritems():
+        for k, v in kwargs.items():
             fixed[k.replace('_', '-')] = v
         return {"method": method, "tag": self.tag, "arguments": fixed}
 

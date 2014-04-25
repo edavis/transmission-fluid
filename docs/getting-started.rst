@@ -14,7 +14,7 @@ Install via `pip` or `easy_install`::
 
 Or download the source and run `python setup.py install`, if that's your thing.
 
-transmission-fluid works on Python 2.6 and 2.7.
+transmission-fluid works with Python 2.6, 2.7, and 3.4.
 
 It also depends on the `requests <http://python-requests.org/>`_
 library, which will be automatically installed if
