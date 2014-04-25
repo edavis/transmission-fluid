@@ -12,7 +12,7 @@ A Python wrapper for Transmission's RPC interface.
 ]}
 """
 
-__version__ = '0.4'
+__version__ = '0.5'
 
 import json
 import requests
