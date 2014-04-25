@@ -110,6 +110,18 @@ class TestTransmissionResponseDeserializing(TestTransmission):
             ret = self.client._deserialize_response(mock.MagicMock())
             self.assertEqual(None, ret)
 
+    def test_json_deserialization(self):
+        obj = {
+            'result': 'success',
+            'tag': 0,
+            'arguments': {
+                'foo': 1,
+                'bar': 2,
+            },
+        }
+        response = mock.MagicMock(text=json.dumps(obj))
+        self.assertEqual({'foo': 1, 'bar': 2}, self.client._deserialize_response(response))
+
 class TestTransmissionJSON(TestTransmission):
     """
     Test the custom JSON encoder and decoder.
