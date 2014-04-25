@@ -16,7 +16,7 @@ __version__ = '0.4'
 
 import json
 import requests
-from json_utils import (
+from .json_utils import (
     TransmissionJSONEncoder, TransmissionJSONDecoder)
 
 CSRF_ERROR_CODE = 409
