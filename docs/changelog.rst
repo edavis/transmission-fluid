@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.5 (TBD)
+Version 0.6 (April 26, 2014)
 ----------------------------
 
 * Add Python 3 support
