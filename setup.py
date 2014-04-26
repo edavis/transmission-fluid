@@ -26,7 +26,7 @@ See the `README <https://github.com/edavis/transmission-fluid#readme>`_ for more
 
 setup(
     name = "transmission-fluid",
-    version = "0.6",
+    version = "0.7-dev",
     description = "A Python wrapper for Transmission's RPC interface",
     long_description = long_description,
     author = "Eric Davis",
