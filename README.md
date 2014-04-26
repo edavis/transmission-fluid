@@ -1,5 +1,5 @@
-transmission-fluid — get under the hood
-========================================
+transmission-fluid
+==================
 
 <a href="http://travis-ci.org/#!/edavis/transmission-fluid"><img src="https://secure.travis-ci.org/edavis/transmission-fluid.png" alt="Travis-CI build status"/></a>
 
