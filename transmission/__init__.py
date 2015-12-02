@@ -17,7 +17,7 @@ __version__ = '0.7-dev'
 import json
 import requests
 from .json_utils import (
-    TransmissionJSONEncoder, TransmissionJSONDecoder)
+    TransmissionJSONEncoder, TransmissionJSONDecoder, UTC)
 
 CSRF_ERROR_CODE = 409
 CSRF_HEADER = 'X-Transmission-Session-Id'
