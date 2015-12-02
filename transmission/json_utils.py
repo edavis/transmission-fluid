@@ -26,7 +26,13 @@ TIMESTAMP_KEYS = frozenset(
      'addedDate',
      'dateCreated',
      'doneDate',
-     'startDate'])
+     'startDate',
+     'lastAnnounceStartTime',
+     'lastAnnounceTime',
+     'lastScrapeStartTime',
+     'lastScrapeTime',
+     'nextAnnounceTime',
+     'nextScrapeTime'])
 
 def epoch_to_datetime(value):
     return datetime.datetime.fromtimestamp(value, UTC())
