@@ -6,9 +6,11 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+env:
+  - PIP_USE_MIRRORS=true
 install:
-  - pip install . --use-mirrors
-  - pip install nose mock --use-mirrors
+  - pip install .
+  - pip install nose mock
 script: nosetests
 notifications:
   email: false
