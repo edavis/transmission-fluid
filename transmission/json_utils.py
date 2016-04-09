@@ -7,16 +7,35 @@ import json
 import calendar
 import datetime
 
+class UTC(datetime.tzinfo):
+    """UTC"""
+
+    def utcoffset(self, dt):
+        return datetime.timedelta(0)
+
+    def tzname(self, dt):
+        return 'UTC'
+
+    def dst(self, dt):
+        return datetime.timedelta(0)
+
+
 # UNIX epochs to be turned into UTC datetimes
 TIMESTAMP_KEYS = frozenset(
     ['activityDate',
      'addedDate',
      'dateCreated',
      'doneDate',
-     'startDate'])
+     'startDate',
+     'lastAnnounceStartTime',
+     'lastAnnounceTime',
+     'lastScrapeStartTime',
+     'lastScrapeTime',
+     'nextAnnounceTime',
+     'nextScrapeTime'])
 
 def epoch_to_datetime(value):
-    return datetime.datetime.utcfromtimestamp(value)
+    return datetime.datetime.fromtimestamp(value, UTC())
 
 def datetime_to_epoch(value):
     if isinstance(value, datetime.datetime):

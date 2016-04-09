@@ -5,3 +5,4 @@ MANIFEST
 *.egg-info
 build
 docs/_build
+.idea

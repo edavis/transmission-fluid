@@ -132,7 +132,8 @@ class TestTransmissionJSON(TestTransmission):
         """
         returned = json.loads(json.dumps({"addedDate": 1320091283}),
                               cls=transmission.TransmissionJSONDecoder)
-        expected = {"addedDate": datetime.datetime(2011, 10, 31, 20, 1, 23)}
+        expected = {"addedDate": datetime.datetime(2011, 10, 31, 20, 1, 23,
+                                                   tzinfo=transmission.UTC())}
         self.assertEqual(expected, returned)
 
     def test_datetimes_to_epochs(self):
